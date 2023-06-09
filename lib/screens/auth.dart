@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+final _firebase = FirebaseAuth.instance;
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
@@ -16,10 +19,12 @@ class _AuthScreenState extends State<AuthScreen> {
   void _submit() {
     final isValid = _formKey.currentState!.validate();
 
-    if (isValid) {
-      _formKey.currentState!.save();
-      print('email: $_enteredEmail, password: $_enteredPassword');
-    }
+    if (!isValid) return;
+
+    _formKey.currentState!.save();
+
+    if (_isLogin) {
+    } else {}
   }
 
   @override
